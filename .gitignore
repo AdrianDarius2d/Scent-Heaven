@@ -55,3 +55,17 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Scent-Heaven additions
+# SQLite database files (the seeder recreates them, and they shouldn't be shared)
+*.db
+*.db-shm
+*.db-wal
+
+# IDE folders and user files
+.vs/
+.vscode/
+*.user
+
+# Local settings that may hold secrets
+appsettings.Local.json
