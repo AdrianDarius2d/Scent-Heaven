@@ -23,6 +23,14 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Apply migrations and seed demo data on startup (development convenience).
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await db.Database.MigrateAsync();
+    await DbSeeder.SeedAsync(db);
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
